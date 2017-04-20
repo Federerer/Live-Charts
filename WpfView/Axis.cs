@@ -713,6 +713,15 @@ namespace LiveCharts.Wpf
                 new Binding {Path = new PropertyPath(Wpf.Separator.StrokeThicknessProperty), Source = s});
             l.SetBinding(VisibilityProperty,
                 new Binding {Path = new PropertyPath(VisibilityProperty), Source = s});
+            l.SetBinding(SnapsToDevicePixelsProperty,
+                new Binding { Path = new PropertyPath(SnapsToDevicePixelsProperty), Source = s });
+            l.SetBinding(UseLayoutRoundingProperty,
+                new Binding { Path = new PropertyPath(UseLayoutRoundingProperty), Source = s });
+
+            if (l.UseLayoutRounding || l.SnapsToDevicePixels)
+            {
+                l.SetValue(RenderOptions.EdgeModeProperty, EdgeMode.Aliased);
+            }
 
             return l;
         }
