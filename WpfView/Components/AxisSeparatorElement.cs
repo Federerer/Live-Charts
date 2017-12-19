@@ -127,6 +127,11 @@ namespace LiveCharts.Wpf.Components
         public void Place(ChartCore chart, AxisCore axis, AxisOrientation direction, int axisIndex, 
             double toLabel, double toLine, double tab)
         {
+            if (Line.UseLayoutRounding || Line.SnapsToDevicePixels)
+            {
+                toLine = Math.Round(toLine);
+            }
+
             if (direction == AxisOrientation.Y)
             {
                 Line.X1 = chart.DrawMargin.Left;
@@ -173,6 +178,11 @@ namespace LiveCharts.Wpf.Components
         /// <param name="tab">The tab.</param>
         public void Move(ChartCore chart, AxisCore axis, AxisOrientation direction, int axisIndex, double toLabel, double toLine, double tab)
         {
+            if (Line.UseLayoutRounding || Line.SnapsToDevicePixels)
+            {
+                toLine = Math.Round(toLine);
+            }
+
             if (direction == AxisOrientation.Y)
             {
                 Line.BeginAnimation(Line.X1Property,
